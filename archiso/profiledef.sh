@@ -3,29 +3,21 @@
 # Based on official Arch Linux releng profile
 # Reference: https://gitlab.archlinux.org/archlinux/archiso/-/blob/master/configs/releng/profiledef.sh
 
-# ===========================================================================
-# PROFILE METADATA
-# ===========================================================================
 profile_name="methos-linux"
 iso_label="METHOS_$(date +%Y%m)"
 iso_publisher="Methos Linux Project <https://github.com/methos-linux>"
 iso_application="Methos Linux Live/Installation System"
 iso_volume_id="METHOS_LINUX"
-iso_version="$(cat ../VERSION 2>/dev/null || echo '0.1.0-alpha')-$(date +%Y.%m.%d)"
+iso_version="$(cat VERSION 2>/dev/null || echo '0.1.0-alpha')-$(date +%Y.%m.%d)"
 iso_filename="methos-linux-${iso_version}-x86_64.iso"
 
-# ===========================================================================
-# BOOT MODES
-# ===========================================================================
-# GRUB handles both BIOS and UEFI in a single configuration
-# NOTE: uefi_arch is set internally by mkarchiso (readonly) - do NOT set it here
+# Boot modes: GRUB handles both BIOS + UEFI
+# uefi_arch is readonly - set automatically by mkarchiso
 boot_modes=(
     "bios+uefi-x64.grub.esp"
 )
 
-# ===========================================================================
-# FILESYSTEM
-# ===========================================================================
+# Filesystem
 airootfs_image_type="squashfs"
 airootfs_image_tool_options=(
     "-comp" "zstd"
@@ -33,9 +25,7 @@ airootfs_image_tool_options=(
     "-no-duplicates"
 )
 
-# ===========================================================================
-# PERMISSIONS
-# ===========================================================================
+# Permissions
 file_permissions=(
     "/etc/shadow:0:0:0400"
     "/etc/gshadow:0:0:0400"
@@ -45,27 +35,11 @@ file_permissions=(
     "/etc/calamares/scripts/merge_profiles.sh:0:0:755"
 )
 
-# ===========================================================================
-# SYMLINKS
-# ===========================================================================
+# Symlinks
 file_symlinks=(
     "/usr/bin/sh:bash"
     "/usr/bin/editor:nvim"
 )
 
-# ===========================================================================
-# ADDITIONAL FILES (on ISO root, relative to profile directory)
-# ===========================================================================
-files=(
-    "README.md"
-    "LICENSE"
-    "VERSION"
-)
-
-# ===========================================================================
-# BOOTLOADER SPECIFIC
-# ===========================================================================
-# EFI GRUB configuration path (relative to profile directory)
+# GRUB config path (relative to this profile directory)
 uefi_grub_cfg="grub/cfg/grub.cfg"
-
-# BIOS GRUB is automatically detected by mkarchiso
