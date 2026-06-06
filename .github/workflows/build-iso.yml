@@ -14,12 +14,11 @@ jobs:
       options: --user root --privileged
 
     steps:
-    - name: Install deps (official packages only)
+    - name: Install deps
       run: |
         pacman -Syu --noconfirm
         pacman -S --noconfirm archiso make git squashfs-tools \
           libisoburn mtools dosfstools python
-        mkarchiso -v
 
     - name: Checkout
       run: |
