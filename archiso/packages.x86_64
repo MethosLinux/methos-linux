@@ -1,6 +1,3 @@
-# Methos Linux - Base System Packages for Live ISO
-# These packages are pre-installed in the live environment
-
 # Core system
 base
 base-devel
@@ -15,27 +12,23 @@ intel-ucode
 grub
 efibootmgr
 
-# Kernel modules and init
+# Init
 mkinitcpio
 
 # Desktop environment
 plasma-meta
-plasma-wayland-session
 sddm
 dolphin
 konsole
 kate
 kf6
 
-# Display and graphics
+# Graphics
 mesa
-xf86-video-intel
-xf86-video-amdgpu
-xf86-video-nouveau
 vulkan-intel
 vulkan-radeon
 
-# Essential userland utils
+# Essential utilities
 sudo
 nano
 neovim
@@ -43,7 +36,7 @@ git
 curl
 wget
 htop
-neofetch
+btop
 fastfetch
 kitty
 tmux
@@ -71,9 +64,8 @@ noto-fonts-emoji
 ttf-jetbrains-mono
 power-profiles-daemon
 
-# Calamares installer (ONLINE installation)
+# Installer
 calamares
-calamares-config
 
 # Python
 python
