@@ -32,7 +32,7 @@
 
 ```bash
 # Clone the project
-git clone https://github.com/methos-linux/methos-linux.git
+git clone https://github.com/MethosLinux/methos-linux.git
 cd methos-linux
 
 # Build ISO (on Arch Linux)
@@ -57,4 +57,4 @@ GNU General Public License v3.0
 
 ---
 
-**Project:** [github.com/methos-linux/methos-linux](https://github.com/methos-linux/methos-linux)
+**Project:** [github.com/MethosLinux/methos-linux](https://github.com/MethosLinux/methos-linux)
