@@ -14,17 +14,11 @@ jobs:
       options: --user root --privileged
 
     steps:
-    - name: Install deps + archiso
+    - name: Install deps (official packages only)
       run: |
         pacman -Syu --noconfirm
-        pacman -S --noconfirm git make base-devel squashfs-tools \
-          libisoburn mtools dosfstools python python-pip python-sphinx
-        cd /tmp
-        git clone --depth 1 https://gitlab.archlinux.org/archlinux/archiso.git
-        cd archiso
-        make install
-        cd /
-        rm -rf /tmp/archiso
+        pacman -S --noconfirm archiso make git squashfs-tools \
+          libisoburn mtools dosfstools python
         mkarchiso -v
 
     - name: Checkout
