@@ -1,6 +1,3 @@
-# Methos Linux - Diagnostic ISO Builder
-# Shows full mkarchiso debug output
-
 name: Build Methos Linux ISO
 
 on:
@@ -17,58 +14,26 @@ jobs:
       options: --user root
 
     steps:
-    - name: Install everything
+    - name: Install deps
       run: |
         pacman -Syu --noconfirm
-        pacman -S --noconfirm git archiso make base-devel grub \
-          squashfs-tools libisoburn mtools dosfstools python 2>&1
+        pacman -S --noconfirm git archiso make base-devel \
+          grub squashfs-tools libisoburn mtools dosfstools \
+          python 2>&1
 
     - name: Checkout
       run: |
         git clone https://github.com/${{ github.repository }}.git /build
         cd /build && git checkout ${{ github.sha }}
 
-    - name: DIAGNOSTIC - show archiso version
-      run: |
-        mkarchiso -v 2>&1
-        pacman -Qi archiso 2>&1 | head -20
-
-    - name: DIAGNOSTIC - show profile
-      run: |
-        echo "=== profiledef.sh ==="
-        cat -A /build/archiso/profiledef.sh
-        echo "=== file tree ==="
-        find /build/archiso -type f | sort
-        echo "=== dir tree ==="
-        find /build/archiso -type d | sort
-
-    - name: DIAGNOSTIC - try mkarchiso with trace
+    - name: Build
       run: |
         cd /build
         mkdir -p out work
-        bash -x /usr/bin/mkarchiso -v -w work -o out ./archiso 2>&1 | head -200 || true
-        echo "=== MAKE SURE WE SEE ALL ERRORS ==="
+        mkarchiso -v -w work -o out ./archiso 2>&1
 
-    - name: Collect full log
-      if: always()
-      run: |
-        cd /build
-        mkdir -p out
-        bash -x /usr/bin/mkarchiso -v -w work -o out ./archiso 2>&1 | tee /tmp/full.log || true
-        wc -l /tmp/full.log
-        echo "=== LAST 100 LINES ==="
-        tail -100 /tmp/full.log
-
-    - name: Upload full log
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: full-build-log
-        path: /tmp/full.log
-        retention-days: 30
-
-    - name: Upload ISO (if any)
-      if: always()
+    - name: Upload ISO
+      if: success()
       uses: actions/upload-artifact@v4
       with:
         name: methos-linux-iso

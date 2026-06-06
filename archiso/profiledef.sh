@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Minimal profile matching Arch releng exactly
+# Methos Linux - archiso profile
+# Compatible with archiso v72 (GitHub Actions version)
 
 profile_name="methos-linux"
 iso_label="METHOS_$(date +%Y%m)"
