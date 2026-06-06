@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
-# Exact copy of Arch Linux releng profiledef.sh format
+# Methos Linux - archiso profile definition
 
 profile_name="methos-linux"
 iso_label="METHOS_$(date +%Y%m)"
@@ -12,3 +12,6 @@ buildmodes=('iso')
 boot_modes=('bios.grub.mbr' 'uefi-x64.systemd-boot.esp')
 airootfs_image_type="squashfs"
 airootfs_image_tool_options=('-comp' 'zstd')
+
+# REQUIRED by mkarchiso v80+
+pacman_conf="pacman.conf"
