@@ -14,19 +14,25 @@ jobs:
       options: --user root
 
     steps:
-    - name: Install deps
+    - name: Install deps + latest archiso from git
       run: |
         pacman -Syu --noconfirm
-        pacman -S --noconfirm git archiso make base-devel \
-          grub squashfs-tools libisoburn mtools dosfstools \
-          python 2>&1
+        pacman -S --noconfirm git make base-devel squashfs-tools \
+          libisoburn mtools dosfstools python
+        # Install latest archiso from git (not the old package)
+        cd /tmp
+        git clone --depth 1 https://gitlab.archlinux.org/archlinux/archiso.git
+        cd archiso
+        make install
+        cd /
+        rm -rf /tmp/archiso
 
     - name: Checkout
       run: |
         git clone https://github.com/${{ github.repository }}.git /build
         cd /build && git checkout ${{ github.sha }}
 
-    - name: Build
+    - name: Build ISO
       run: |
         cd /build
         mkdir -p out work
