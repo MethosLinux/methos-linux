@@ -1,0 +1,114 @@
+# Methos Linux - Developer Profile Package List
+# These packages are installed when the Developer profile is selected
+# Each line represents one or more packages to install
+
+# Version Control
+git
+git-lfs
+gh
+
+# Editors
+code  # VS Code (proprietary)
+# vscodium  # Open source alternative (uncomment if preferred)
+
+# Python Development
+python
+python-pip
+python-virtualenv
+python-pipenv
+python-poetry
+python-black
+python-flake8
+python-mypy
+python-pylint
+python-pytest
+python-wheel
+python-setuptools
+
+# Node.js Development
+nodejs
+npm
+yarn
+pnpm
+typescript
+ts-node
+
+# Go Development
+go
+gopls  # Go language server
+
+# Rust Development
+rust
+rustup
+rust-analyzer
+cargo
+cargo-watch
+
+# Java Development
+jdk-openjdk
+maven
+gradle
+ant
+
+# C/C++ Development
+gcc
+gdb
+cmake
+make
+clang
+lldb
+lld
+libc++
+libc++abi
+valgrind
+strace
+ltrace
+
+# Containers
+docker
+docker-compose
+containerd
+runc
+
+# Databases
+sqlite
+postgresql
+mysql
+mariadb
+redis
+mongodb
+
+# DevOps & Cloud
+vagrant
+terraform
+ansible
+kubectl
+helm
+minikube
+
+# API Testing
+postman-bin  # From AUR
+# insomnia
+
+# Additional Development Tools
+jq
+yq
+httpie
+curl
+wget
+htop
+btop
+neofetch
+fastfetch
+tmux
+screen
+ripgrep
+fd
+fzf
+bat
+exa
+eza
+delta
+lazygit
+lazydocker
+hyperfine

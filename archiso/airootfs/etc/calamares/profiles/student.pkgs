@@ -1,0 +1,122 @@
+# Methos Linux - Student Profile Package List
+# Essential tools for students: office, communication, research
+
+# ============================================================================
+# Web Browser & Communication
+# ============================================================================
+firefox
+firefox-i18n-en-us
+chromium
+thunderbird
+telegram-desktop
+discord
+slack-desktop
+zoom
+whatsapp-nativefier
+element-desktop
+
+# ============================================================================
+# Office & Productivity
+# ============================================================================
+libreoffice-fresh
+libreoffice-fresh-en-us
+onlyoffice-bin
+calligra
+okular
+evince
+xournalpp
+masterpdfeditor
+pandoc
+texlive-most
+texstudio
+lyx
+scribus
+gimp
+inkscape
+krita
+drawio
+dia
+
+# ============================================================================
+# Note-Taking & Knowledge Management
+# ============================================================================
+obsidian
+joplin
+cherrytree
+trilium
+logseq
+zettlr
+qownnotes
+notes-up
+simplenote
+boostnote
+
+# ============================================================================
+# Programming & Development (Student Level)
+# ============================================================================
+git
+vscodium
+python
+python-pip
+nodejs
+npm
+gcc
+make
+cmake
+neovim
+vim
+
+# ============================================================================
+# Research & Citation Tools
+# ============================================================================
+zotero
+mendeley
+jabref
+docear
+calibre
+
+# ============================================================================
+# Multimedia & Creativity
+# ============================================================================
+vlc
+mpv
+audacity
+obs-studio
+kdenlive
+openshot
+rhythmbox
+spotify
+gimp
+inkscape
+krita
+blender
+flameshot
+spectacle
+kolourpaint
+
+# ============================================================================
+# Utilities
+# ============================================================================
+htop
+btop
+neofetch
+fastfetch
+curl
+wget
+unzip
+zip
+p7zip
+tar
+gzip
+gnome-disk-utility
+gparted
+baobab
+filelight
+synaptic
+gnome-software
+plasma-disks
+kate
+konsole
+kitty
+tmux
+screen

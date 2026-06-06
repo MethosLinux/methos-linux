@@ -1,0 +1,52 @@
+# Methos Linux - Git Ignore
+
+# Built ISO files
+*.iso
+*.iso.sig
+*.iso.zsync
+
+# Build artifacts
+out/
+work/
+build/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.env
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+
+# GPG signatures
+*.sig
+
+# Docker
+docker-build/
+
+# Packages
+packages/custom/*
+packages/overlays/*
+!packages/custom/.gitkeep
+!packages/overlays/.gitkeep
+
+# Config overrides
+local.conf

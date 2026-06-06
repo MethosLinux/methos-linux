@@ -1,0 +1,7 @@
+# Methos Linux - Sudo Configuration
+# Allow members of group wheel to execute any command
+%wheel ALL=(ALL:ALL) ALL
+
+# Allow live session user to run sudo without password (convenience for live session)
+# This is removed during installation
+%wheel ALL=(ALL) NOPASSWD: ALL

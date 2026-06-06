@@ -1,0 +1,21 @@
+# Methos Linux - Operating System Release Information
+# This file identifies the system as "Methos Linux"
+# Used by systemd, GNOME, and other tools to display OS info
+
+NAME="Methos Linux"
+ID="methos"
+ID_LIKE="arch"
+PRETTY_NAME="Methos Linux"
+VERSION_ID="0.1.0"
+VERSION="0.1.0 (Alpha)"
+VERSION_CODENAME="alpha"
+BUILD_ID="$(date +%Y%m%d)"
+HOME_URL="https://methos-linux.org"
+DOCUMENTATION_URL="https://docs.methos-linux.org"
+SUPPORT_URL="https://github.com/methos-linux/methos-linux/issues"
+BUG_REPORT_URL="https://github.com/methos-linux/methos-linux/issues"
+LOGO="methos-linux"
+ANSI_COLOR="0;36"
+CPE_NAME="cpe:/o:methos:methos_linux:0.1.0"
+VARIANT="Methos Linux"
+VARIANT_ID="methos"

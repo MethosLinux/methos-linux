@@ -1,0 +1,107 @@
+# Methos Linux - Minimal Profile Package List
+# Lightweight installation with just KDE Plasma and basic utilities
+# Perfect for users who want to build their own toolset
+
+# ============================================================================
+# KDE Plasma Desktop (minimal)
+# ============================================================================
+plasma-desktop
+plasma-wayland-session
+kf6
+sddm
+dolphin
+konsole
+kate
+systemsettings
+discover
+kwrite
+kcalc
+ark
+gwenview
+spectacle
+
+# ============================================================================
+# Web Browser
+# ============================================================================
+firefox
+
+# ============================================================================
+# Network Management
+# ============================================================================
+networkmanager
+network-manager-applet
+iwd
+dhcpcd
+openssh
+
+# ============================================================================
+# Basic Utilities
+# ============================================================================
+sudo
+nano
+neovim
+vim
+git
+curl
+wget
+htop
+btop
+neofetch
+fastfetch
+kitty
+tmux
+screen
+unzip
+zip
+tar
+gzip
+p7zip
+rsync
+man-db
+man-pages
+texinfo
+bash-completion
+
+# ============================================================================
+# Audio & Video
+# ============================================================================
+pipewire
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
+wireplumber
+pavucontrol
+
+# ============================================================================
+# Printing (optional)
+# ============================================================================
+cups
+system-config-printer
+
+# ============================================================================
+# Bluetooth
+# ============================================================================
+bluez
+bluez-utils
+bluedevil
+
+# ============================================================================
+# Fonts (minimal set)
+# ============================================================================
+noto-fonts
+noto-fonts-emoji
+ttf-jetbrains-mono
+ttf-nerd-fonts-symbols
+
+# ============================================================================
+# System Tools
+# ============================================================================
+power-profiles-daemon
+acpid
+pamixer
+brightnessctl
+xdg-user-dirs
+xdg-utils
+filelight
+partitionmanager
+gparted

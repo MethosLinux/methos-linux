@@ -1,0 +1,5 @@
+# Methos Linux - Locale Generation
+# Uncomment the locales you want to generate
+
+en_US.UTF-8 UTF-8
+ar_IQ.UTF-8 UTF-8

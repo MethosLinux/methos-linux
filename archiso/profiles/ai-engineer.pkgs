@@ -1,0 +1,161 @@
+# Methos Linux - AI Engineer Profile Package List
+# Machine Learning, Deep Learning, and Data Science tools
+
+# ============================================================================
+# Python & Data Science Core
+# ============================================================================
+python
+python-pip
+python-numpy
+python-scipy
+python-pandas
+python-matplotlib
+python-seaborn
+python-plotly
+python-scikit-learn
+python-statsmodels
+python-sympy
+python-nltk
+python-spacy
+python-gensim
+python-networkx
+python-h5py
+python-tqdm
+python-requests
+python-beautifulsoup4
+python-selenium
+python-psutil
+
+# ============================================================================
+# Machine Learning Frameworks
+# ============================================================================
+python-scikit-learn
+python-xgboost
+python-lightgbm
+python-catboost
+python-optuna
+python-hyperopt
+python-mlxtend
+python-imbalanced-learn
+
+# ============================================================================
+# Deep Learning Frameworks
+# ============================================================================
+python-pytorch
+python-pytorch-cuda  # NVIDIA GPU support
+python-tensorflow
+python-tensorflow-cuda  # NVIDIA GPU support
+python-keras
+python-jax
+python-jaxlib
+python-flax
+python-huggingface-hub
+python-transformers
+python-datasets
+python-accelerate
+python-diffusers
+python-onnxruntime
+python-onnx
+python-tensorrt
+
+# ============================================================================
+# Jupyter Ecosystem
+# ============================================================================
+jupyterlab
+jupyter-notebook
+jupyter-console
+jupyter-nbconvert
+jupyter-nbformat
+ipython
+ipykernel
+python-ipywidgets
+python-ipympl
+python-voila
+python-papermill
+python-nbdev
+
+# ============================================================================
+# Computer Vision
+# ============================================================================
+python-opencv
+python-pillow
+python-scikit-image
+python-imageio
+python-albumentations
+python-torchvision
+python-torchvision-cuda
+python-fiftyone
+
+# ============================================================================
+# Natural Language Processing
+# ============================================================================
+python-nltk
+python-spacy
+python-transformers
+python-datasets
+python-sentencepiece
+python-tokenizers
+python-sacremoses
+python-rouge-score
+python-sacrebleu
+python-evaluate
+
+# ============================================================================
+# MLOps & Experiment Tracking
+# ============================================================================
+python-mlflow
+python-wandb
+python-dvc
+python-clearml
+python-pachyderm
+python-feast
+python-great-expectations
+python-shap
+python-lime
+python-eli5
+
+# ============================================================================
+# GPU & CUDA Support
+# ============================================================================
+cuda  # NVIDIA CUDA Toolkit
+cudnn  # NVIDIA cuDNN
+nvidia-dkms
+nvidia-utils
+nvidia-settings
+nvidia-prime
+opencl-nvidia
+libva-nvidia-driver-git
+
+# ============================================================================
+# Databases & Storage
+# ============================================================================
+sqlite
+postgresql
+python-sqlalchemy
+python-pymongo
+python-redis
+python-duckdb
+python-pyarrow
+python-fastparquet
+
+# ============================================================================
+# Additional Tools
+# ============================================================================
+python-tensorboard
+python-gradio
+python-streamlit
+python-dash
+python-pydantic
+python-loguru
+python-rich
+python-typer
+python-click
+python-fastapi
+python-uvicorn
+python-gunicorn
+python-celery
+python-dask
+python-ray
+python-polars
+python-pydub
+python-librosa  # Audio processing

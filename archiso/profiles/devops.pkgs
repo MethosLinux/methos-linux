@@ -1,0 +1,211 @@
+# Methos Linux - DevOps Profile Package List
+# Infrastructure, Containers, Orchestration, and Automation tools
+
+# ============================================================================
+# Container Runtimes
+# ============================================================================
+docker
+docker-compose
+containerd
+runc
+podman
+podman-docker
+buildah
+skopeo
+cri-o
+cri-tools
+nerdctl
+
+# ============================================================================
+# Kubernetes Ecosystem
+# ============================================================================
+kubectl
+kubeadm
+kubelet
+minikube
+kind
+k3s
+helm
+helmfile
+kustomize
+istio
+linkerd
+cert-manager
+argo-cd
+fluxcd
+k9s
+kubectx
+kubens
+krew
+stern
+kubetail
+kubescape
+popeye
+kube-bench
+
+# ============================================================================
+# Infrastructure as Code (IaC)
+# ============================================================================
+terraform
+terraform-ls
+packer
+vagrant
+ansible
+ansible-lint
+pulumi
+crossplane
+tofu  # OpenTofu
+
+# ============================================================================
+# CI/CD Tools
+# ============================================================================
+jenkins
+gitlab-runner
+drone
+argocd
+woodpecker
+tekton
+
+# ============================================================================
+# Monitoring & Observability
+# ============================================================================
+prometheus
+grafana
+alertmanager
+node_exporter
+blackbox_exporter
+loki
+promtail
+tempo
+influxdb
+telegraf
+netdata
+grafana-agent
+thanos
+cortex
+victoria-metrics
+cadvisor
+sysstat
+iotop
+iftop
+nethogs
+vnstat
+
+# ============================================================================
+# Logging & Tracing
+# ============================================================================
+elasticsearch
+logstash
+kibana
+filebeat
+metricbeat
+packetbeat
+opentelemetry-collector
+jaeger
+tempo
+
+# ============================================================================
+# Cloud CLI Tools
+# ============================================================================
+aws-cli
+aws-cdk
+aws-sam-cli
+azure-cli
+google-cloud-cli
+doctl  # DigitalOcean
+hcloud  # Hetzner
+linode-cli
+oci-cli
+pulumi
+
+# ============================================================================
+# Database & Message Queues
+# ============================================================================
+postgresql
+mysql
+mariadb
+redis
+mongodb
+cassandra
+rabbitmq
+kafka
+zookeeper
+etcd
+consul
+vault
+minio
+cockroachdb
+
+# ============================================================================
+# Networking & Service Mesh
+# ============================================================================
+istio
+linkerd
+consul
+traefik
+nginx
+haproxy
+envoy
+caddy
+squid
+bind
+dnsmasq
+keepalived
+
+# ============================================================================
+# Security & Secrets Management
+# ============================================================================
+vault
+sops
+age
+gopass
+pass
+bitwarden-cli
+hashicorp-vault
+trivy
+grype
+syft
+cosign
+notary
+step-cli
+
+# ============================================================================
+# Development Tools for DevOps
+# ============================================================================
+git
+git-lfs
+gh
+jq
+yq
+httpie
+curl
+wget
+htop
+btop
+tmux
+screen
+ripgrep
+fd
+fzf
+bat
+eza
+delta
+lazygit
+lazydocker
+hyperfine
+dog
+procs
+bottom
+bandwhich
+grex
+choose
+sd
+zoxide
+atuin
+mcfly
+duf
+dust
+dua-cli
+broot
+ncdu
+difftastic

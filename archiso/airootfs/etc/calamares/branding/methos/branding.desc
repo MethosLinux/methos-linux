@@ -1,0 +1,89 @@
+# Methos Linux - Calamares Branding Description
+# Defines the visual identity for the Calamares installer
+
+# Branding component name (must match directory name)
+componentName: methos
+
+# Name shown in the installer window title
+windowTitle: Methos Linux Installer
+
+# Component version
+version: 0.1.0
+
+# Short product name
+productName: Methos Linux
+shortProductName: Methos
+
+# Version display
+versionedName: Methos Linux 0.1.0 Alpha
+shortVersionedName: Methos Linux 0.1.0
+
+# Bootloader entries
+bootloaderEntryName: Methos Linux
+
+# Image files (relative to this file's directory)
+images:
+    # Main product logo (shown on welcome page)
+    productLogo: "methos.png"
+    
+    # Banner image (shown on top of sidebar)
+    productBanner: "methos_banner.png"
+    
+    # Icon used when productLogo is not available
+    productIcon: "methos.png"
+
+# Style settings
+style:
+    # Sidebar background color
+    sidebarBackground: "#1a1a2e"
+    
+    # Sidebar text color
+    sidebarText: "#ffffff"
+    
+    # Sidebar current step indicator
+    sidebarHighlight: "#00d4ff"
+    
+    # Main content background
+    contentBackground: "#ffffff"
+    
+    # Header text color
+    headerText: "#1a1a2e"
+    
+    # Body text color
+    bodyText: "#333333"
+    
+    # Link color
+    linkColor: "#00d4ff"
+    
+    # Button background
+    buttonBackground: "#1a1a2e"
+    
+    # Button text
+    buttonText: "#ffffff"
+    
+    # Button hover
+    buttonHover: "#00d4ff"
+    
+    # Success color
+    successColor: "#00ff88"
+    
+    # Warning color
+    warningColor: "#ffaa00"
+    
+    # Error color
+    errorColor: "#ff4444"
+
+# Slideshow (shown during installation)
+slideshow: "show.qml"
+
+# Supported languages
+supportedLanguages:
+    - "en_US"
+    - "ar"
+    - "fr_FR"
+    - "de_DE"
+    - "es_ES"
+    - "zh_CN"
+    - "ja_JP"
+    - "ru_RU"
+    - "tr_TR"
