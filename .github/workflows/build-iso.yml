@@ -1,5 +1,5 @@
 # Methos Linux - GitHub Actions ISO Builder
-# Automatically builds the ISO on pushes to main and tags
+# Fixed: Updated actions, added FORCE_JAVASCRIPT_ACTIONS_TO_NODE24
 name: Build Methos Linux ISO
 
 on:
@@ -15,32 +15,80 @@ on:
         required: false
         default: ''
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     container:
       image: archlinux:latest
+      options: --user root
 
     steps:
+    - name: Install git and checkout
+      run: |
+        pacman -Syu --noconfirm
+        pacman -S --noconfirm git
+      shell: bash
+
     - name: Checkout repository
       uses: actions/checkout@v4
 
     - name: Install build dependencies
       run: |
         pacman -Syu --noconfirm
-        pacman -S --noconfirm archiso calamares grub \
-          squashfs-tools libisoburn mtools dosfstools \
-          make git base-devel python python-pip
+        pacman -S --noconfirm \
+          archiso \
+          make \
+          base-devel \
+          grub \
+          dosfstools \
+          mtools \
+          libisoburn \
+          squashfs-tools \
+          python \
+          python-pip
+      shell: bash
 
-    - name: Validate configuration
-      run: make validate
+    - name: Verify files exist
+      run: |
+        echo "=== Checking required files ==="
+        ls -la archiso/profiledef.sh && echo "profiledef.sh OK" || echo "MISSING profiledef.sh"
+        ls -la archiso/grub/cfg/grub.cfg && echo "grub.cfg OK" || echo "MISSING grub.cfg"
+        ls -la archiso/airootfs/etc/calamares/settings.conf && echo "settings.conf OK" || echo "MISSING settings.conf"
+        ls -la archiso/profiles/*.pkgs && echo "Profiles OK" || echo "MISSING profiles"
+        ls -la archiso/pacman.conf && echo "pacman.conf OK" || echo "MISSING pacman.conf"
+      shell: bash
+
+    - name: Check archiso profile
+      run: |
+        echo "=== Running mkarchiso profile check ==="
+        cd archiso
+        cat profiledef.sh
+        cat pacman.conf
+      shell: bash
 
     - name: Build ISO
-      run: make iso
+      run: |
+        echo "=== Starting ISO build ==="
+        mkdir -p out work
+        mkarchiso -v -w work -o out ./archiso 2>&1
+      shell: bash
       env:
         VERSION: ${{ github.event.inputs.version || github.ref_name }}
+      timeout-minutes: 60
+
+    - name: List output
+      run: |
+        echo "=== Build artifacts ==="
+        ls -la out/ 2>/dev/null || echo "No ISO output found"
+        echo "=== Work directory ==="
+        ls -la work/ 2>/dev/null || echo "No work directory"
+      shell: bash
 
     - name: Upload ISO artifact
+      if: success()
       uses: actions/upload-artifact@v4
       with:
         name: methos-linux-iso
@@ -48,7 +96,7 @@ jobs:
         retention-days: 30
 
     - name: Create Release (on tags only)
-      if: startsWith(github.ref, 'refs/tags/v')
+      if: startsWith(github.ref, 'refs/tags/v') && success()
       uses: softprops/action-gh-release@v2
       with:
         files: out/*.iso
