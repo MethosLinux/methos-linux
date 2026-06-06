@@ -18,14 +18,14 @@ jobs:
       run: |
         pacman -Syu --noconfirm
         pacman -S --noconfirm git make base-devel squashfs-tools \
-          libisoburn mtools dosfstools python python-pip
+          libisoburn mtools dosfstools python python-pip python-sphinx
         cd /tmp
         git clone --depth 1 https://gitlab.archlinux.org/archlinux/archiso.git
         cd archiso
-        make install 2>&1 || true
+        make install
         cd /
         rm -rf /tmp/archiso
-        which mkarchiso || echo "mkarchiso not found"
+        mkarchiso -v
 
     - name: Checkout
       run: |
