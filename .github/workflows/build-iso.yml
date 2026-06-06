@@ -1,6 +1,5 @@
-# Methos Linux - GitHub Actions ISO Builder
-# Zero Node.js actions (manual checkout)
-# Captures all logs even on failure
+# Methos Linux - Diagnostic ISO Builder
+# Shows full mkarchiso debug output
 
 name: Build Methos Linux ISO
 
@@ -18,94 +17,60 @@ jobs:
       options: --user root
 
     steps:
-    - name: 📦 Install dependencies
+    - name: Install everything
       run: |
-        pacman -Syu --noconfirm 2>&1
-        pacman -S --noconfirm \
-          git archiso make base-devel grub \
-          squashfs-tools libisoburn mtools dosfstools \
-          python python-pip 2>&1
-        echo "✅ Dependencies installed"
+        pacman -Syu --noconfirm
+        pacman -S --noconfirm git archiso make base-devel grub \
+          squashfs-tools libisoburn mtools dosfstools python 2>&1
 
-    - name: 📥 Checkout repo
+    - name: Checkout
       run: |
-        git clone https://github.com/${{ github.repository }}.git /build 2>&1
-        cd /build
-        git checkout ${{ github.sha }} 2>&1
-        echo "✅ Repo cloned at /build"
+        git clone https://github.com/${{ github.repository }}.git /build
+        cd /build && git checkout ${{ github.sha }}
 
-    - name: 📋 Show project structure
+    - name: DIAGNOSTIC - show archiso version
       run: |
-        cd /build
-        pwd
-        ls -la
-        echo "--- archiso ---"
-        ls -la archiso/
-        echo "--- archiso/profiles ---"
-        ls -la archiso/profiles/ 2>/dev/null || echo "no profiles dir"
-        echo "--- airootfs ---"
-        ls -la archiso/airootfs/etc/ 2>/dev/null || echo "no airootfs"
-        echo "--- VERSION ---"
-        cat VERSION 2>/dev/null || echo "no version"
-        echo "✅ Structure OK"
+        mkarchiso -v 2>&1
+        pacman -Qi archiso 2>&1 | head -20
 
-    - name: 🔧 Check archiso
+    - name: DIAGNOSTIC - show profile
       run: |
-        mkarchiso -v 2>&1 || echo "mkarchiso not found"
+        echo "=== profiledef.sh ==="
+        cat -A /build/archiso/profiledef.sh
+        echo "=== file tree ==="
+        find /build/archiso -type f | sort
+        echo "=== dir tree ==="
+        find /build/archiso -type d | sort
 
-    - name: 🏗️ Build ISO (attempt)
-      id: build
-      continue-on-error: true
+    - name: DIAGNOSTIC - try mkarchiso with trace
       run: |
         cd /build
         mkdir -p out work
-        mkarchiso -v -w work -o out ./archiso 2>&1 | tee /build/build.log
-        echo "exit_code=$?" >> $GITHUB_OUTPUT
+        bash -x /usr/bin/mkarchiso -v -w work -o out ./archiso 2>&1 | head -200 || true
+        echo "=== MAKE SURE WE SEE ALL ERRORS ==="
 
-    - name: 📄 Show build log (first 200 lines)
+    - name: Collect full log
       if: always()
       run: |
-        if [ -f /build/build.log ]; then
-          echo "=== BUILD LOG ==="
-          head -200 /build/build.log
-          echo "... (truncated)"
-          echo "=== LAST 50 LINES ==="
-          tail -50 /build/build.log
-        else
-          echo "No build.log found"
-        fi
+        cd /build
+        mkdir -p out
+        bash -x /usr/bin/mkarchiso -v -w work -o out ./archiso 2>&1 | tee /tmp/full.log || true
+        wc -l /tmp/full.log
+        echo "=== LAST 100 LINES ==="
+        tail -100 /tmp/full.log
 
-    - name: 📁 Show work dir
-      if: always()
-      run: |
-        ls -la /build/work/ 2>/dev/null || echo "No work dir"
-        ls -la /build/work/airootfs/ 2>/dev/null || echo "No airootfs in work"
-        ls -la /build/out/ 2>/dev/null || echo "No out dir"
-        find /build/work -name "*.iso" 2>/dev/null || echo "No ISO in work"
-        find /build -name "*.iso" 2>/dev/null || echo "No ISO anywhere"
-
-    - name: ⬆️ Upload build log
+    - name: Upload full log
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: build-log
-        path: /build/build.log
+        name: full-build-log
+        path: /tmp/full.log
         retention-days: 30
 
-    - name: ⬆️ Upload ISO
-      if: success()
+    - name: Upload ISO (if any)
+      if: always()
       uses: actions/upload-artifact@v4
       with:
         name: methos-linux-iso
         path: /build/out/*.iso
         retention-days: 30
-
-    - name: ✅ Final status
-      if: always()
-      run: |
-        if [ -f /build/out/*.iso ]; then
-          echo "✅ ISO BUILD SUCCESSFUL"
-          ls -lh /build/out/
-        else
-          echo "❌ ISO BUILD FAILED - check build-log artifact"
-        fi
