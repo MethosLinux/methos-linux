@@ -1,12 +1,45 @@
-base base-devel linux linux-firmware linux-headers dkms
-amd-ucode intel-ucode
-grub efibootmgr mkinitcpio
-plasma-meta sddm dolphin konsole kate kf6
-mesa vulkan-intel vulkan-radeon
-sudo nano neovim git curl wget htop btop fastfetch kitty tmux
-unzip zip tar rsync openssh
-networkmanager network-manager-applet firefox
-pipewire pipewire-pulse pipewire-alsa wireplumber pavucontrol
-filelight gwenview okular spectacle kcalc ark
-noto-fonts noto-fonts-emoji ttf-jetbrains-mono
-power-profiles-daemon python python-pip
+base
+base-devel
+linux
+linux-firmware
+linux-headers
+dkms
+amd-ucode
+intel-ucode
+grub
+efibootmgr
+mkinitcpio
+plasma-meta
+sddm
+dolphin
+konsole
+kate
+mesa
+sudo
+nano
+neovim
+git
+curl
+wget
+htop
+btop
+fastfetch
+tmux
+unzip
+zip
+tar
+rsync
+openssh
+networkmanager
+network-manager-applet
+firefox
+pipewire
+pipewire-pulse
+pipewire-alsa
+wireplumber
+pavucontrol
+noto-fonts
+noto-fonts-emoji
+ttf-jetbrains-mono
+python
+python-pip
