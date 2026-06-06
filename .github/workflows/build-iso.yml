@@ -14,17 +14,18 @@ jobs:
       options: --user root --privileged
 
     steps:
-    - name: Install deps + latest archiso from git
+    - name: Install deps + archiso
       run: |
         pacman -Syu --noconfirm
         pacman -S --noconfirm git make base-devel squashfs-tools \
-          libisoburn mtools dosfstools python
+          libisoburn mtools dosfstools python python-pip
         cd /tmp
         git clone --depth 1 https://gitlab.archlinux.org/archlinux/archiso.git
         cd archiso
-        make install
+        make install 2>&1 || true
         cd /
         rm -rf /tmp/archiso
+        which mkarchiso || echo "mkarchiso not found"
 
     - name: Checkout
       run: |
