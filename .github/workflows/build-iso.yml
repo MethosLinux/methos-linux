@@ -14,11 +14,12 @@ jobs:
       options: --user root --privileged
 
     steps:
-    - name: Install deps
+    - name: Install deps (including grub)
       run: |
         pacman -Syu --noconfirm
         pacman -S --noconfirm archiso make git squashfs-tools \
-          libisoburn mtools dosfstools python
+          libisoburn mtools dosfstools python grub
+        which grub-install && echo "grub-install OK"
 
     - name: Checkout
       run: |
